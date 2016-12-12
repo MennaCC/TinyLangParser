@@ -9,6 +9,16 @@ namespace Parser
 {
     class Parser
     {
+        #region Singleton 
+        private static Parser instance;
+        private Parser() { }
+        public static Parser getInstance()
+        {
+            if (instance == null)
+                instance = new Parser();
+            return instance;
+        }
+        #endregion
         //list<token>
         //instance of controller
         //ip string

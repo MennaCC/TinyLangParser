@@ -12,15 +12,21 @@ namespace Parser.Logic
     {
 
         #region Singleton
-        private static Controller instance = new Controller();
+        private static Controller instance;
         private Controller()
         {
 
         }
         public static Controller getInstance()
         {
+            if (instance == null)
+                instance = new Controller();
             return instance;
         }
+        #endregion
+
+        #region Private Attributes 
+        List<GrammarRule> GRList = new List<GrammarRule>();
         #endregion
 
         //list<Node>
@@ -35,6 +41,7 @@ namespace Parser.Logic
         }
         void MatchGrammarRule(TreeNode node , GrammarRule GR)
         {
+
         }
     }
 }
