@@ -10,6 +10,19 @@ namespace Parser.Logic
 {
     class Controller
     {
+
+        #region Singleton
+        private static Controller instance = new Controller();
+        private Controller()
+        {
+
+        }
+        public static Controller getInstance()
+        {
+            return instance;
+        }
+        #endregion
+
         //list<Node>
         /// <summary>
         /// calls appropriate Grammar Rule for a certain token
@@ -20,9 +33,8 @@ namespace Parser.Logic
         {
            
         }
-        void MatchGrammarRule(TreeNode node , IGrammarRule GR)
+        void MatchGrammarRule(TreeNode node , GrammarRule GR)
         {
-
         }
     }
 }

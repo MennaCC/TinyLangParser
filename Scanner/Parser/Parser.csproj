@@ -53,7 +53,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Logic\Controller.cs" />
-    <Compile Include="Logic\IGrammarRule.cs" />
+    <Compile Include="Logic\GrammarRule.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
