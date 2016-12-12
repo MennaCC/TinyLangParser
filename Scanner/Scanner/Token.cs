@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scanner
 {
-    class Token
+    public class Token
     {
 
         public string TokenType;

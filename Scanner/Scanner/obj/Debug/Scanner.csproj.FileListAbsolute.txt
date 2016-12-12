@@ -7,3 +7,6 @@ c:\users\shimaa\documents\visual studio 2015\Projects\Scanner\Scanner\obj\Debug\
 c:\users\shimaa\documents\visual studio 2015\Projects\Scanner\Scanner\obj\Debug\Scanner.csproj.GenerateResource.Cache
 c:\users\shimaa\documents\visual studio 2015\Projects\Scanner\Scanner\obj\Debug\Scanner.exe
 c:\users\shimaa\documents\visual studio 2015\Projects\Scanner\Scanner\obj\Debug\Scanner.pdb
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\bin\Debug\Scanner.exe.config
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\obj\Debug\Scanner.exe
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\obj\Debug\Scanner.pdb
