@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Scanner;
-using System.Windows.Forms;
+using Parser.Tree;
 
 namespace Parser.Logic
 {
@@ -37,7 +37,7 @@ namespace Parser.Logic
 
         #region Private Attributes 
         List<GrammarRule> GRDict = new List<GrammarRule>();
-        private TreeNode HeadNode = new TreeNode();
+        private Node HeadNode = new Node();
         #endregion
 
         /// <summary>
@@ -45,9 +45,13 @@ namespace Parser.Logic
         /// Advance input 
         /// </summary>
         /// <param name="token"></param>
-        void MatchGrammarRule(Token token)
+        
+        //MatchExpression
+        public void MatchExpression(Node node, Token token)
         {
             throw new NotImplementedException();
+            //Don't Advance 
+            //Created node is always a child
         }
 
 
@@ -56,19 +60,29 @@ namespace Parser.Logic
         /// </summary>
         /// <param name="node"></param>
         /// <param name="GR"></param>
-        void MatchGrammarRule(TreeNode node , GrammarRule GR, bool isSibling)
+        /// 
+        //MatchStatement
+        public void MatchStatement(Node node , bool isSibling)
         {
 
-            TreeNode newNode = new TreeNode();
+            Node newNode = new Node();
             if (isSibling)
             {
                 throw new NotImplementedException();
             }
             else
             {
-                node.Nodes.Add(newNode);
+                node.AddChild(newNode);
             }
-            GR.execute(newNode);
+            //GR.execute(newNode);
+        }
+
+        public void MatchStatmentSequence(Node node) {
+            GrStmtSequence stmtSeq = new GrStmtSequence();
+            stmtSeq.execute(node);
+        }
+
+        public void Done() {
         }
     }
 }

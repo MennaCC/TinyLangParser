@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Parser.Tree
 {
-    class Node
+    public class Node
     {
         #region Constructors
         public Node(string txt)

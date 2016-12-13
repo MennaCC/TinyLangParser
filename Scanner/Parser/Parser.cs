@@ -45,14 +45,14 @@ namespace Parser
         /// return current token
         /// </summary>
         /// <returns></returns>
-        Token GetNextToken()
+        public Token GetNextToken()
         {
             return null;
         }
         /// <summary>
         /// currentToken ++ 
         /// </summary>
-        void AdvanceInput()
+        public void AdvanceInput()
         {
 
         }
