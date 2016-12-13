@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Scanner
 {
-    class Scanner
+    public class Scanner
     {
-        enum RESERVED_WORDS { IF, THEN, ELSE, END, REPEAT, UNTIL, READ, WRITE };
+        public enum RESERVED_WORDS { IF, THEN, ELSE, END, REPEAT, UNTIL, READ, WRITE };
         enum SPECIAL_SYMBOLS { PLUS, MINUS, MULTIPLY, DIVIDE, EQUALTO, LESSTHAN, LEFTBRACKET, RIGHTBRACKET, SEMICOLON };
         enum STATES { START, NUMBER, IDENTIFIER, ASSIGN, INCOMMENT, DONE, SPECIALSYMBOLS };
 

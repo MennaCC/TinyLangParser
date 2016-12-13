@@ -8,7 +8,6 @@ namespace Scanner
 {
     public class Token
     {
-
         public string TokenType;
         public string tokenValue;
     }
