@@ -32,13 +32,17 @@ namespace Parser.Logic
                 // if there is else part advance the else token then match stmt_seq
                 if (nextToken.tokenValue == Scanner.Scanner.RESERVED_WORDS.ELSE.ToString())
                 {
+                    // advance the else token
                     Parser.getInstance().AdvanceInput();
+                    // match the else stmt_seq
                     Controller.getInstance().MatchStatmentSequence(node);
                 }
-
+                
+                //get the next token which must be end 
                 nextToken = Parser.getInstance().GetNextToken();
                 if (nextToken.tokenValue == Scanner.Scanner.RESERVED_WORDS.END.ToString())
                 {
+                    //advance the end token 
                     Parser.getInstance().AdvanceInput();
                 }
             }

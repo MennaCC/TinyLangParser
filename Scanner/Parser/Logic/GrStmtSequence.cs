@@ -12,13 +12,13 @@ namespace Parser.Logic
         public override void execute(Node node)
         {
             // match first statement
-            Controller.getInstance().MatchStatement(node, new GrStatment(), false);
+            Controller.getInstance().MatchStatement(node, false);
             // match semicolon 
 
             // loop till there is no more tokens  
             while (true)
             {
-                Controller.getInstance().MatchStatement(node, new GrStatment(), false);
+                Controller.getInstance().MatchStatement(node, false);
             }
 
             // notify done 

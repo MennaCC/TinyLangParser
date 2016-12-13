@@ -12,17 +12,17 @@ namespace Parser.Logic
     {
         public override void execute(Node node)
         {
+            // match the read identifier
             Token expectedToken = new Token();
             expectedToken.TokenType = Scanner.Scanner.STATES.IDENTIFIER.ToString();
             Boolean matched = MatchInput(expectedToken);
 
             if (matched)
             {
+                // modify the read node text to add the identifier name
+                node.Text = node.Text + " " + Parser.getInstance().GetNextToken().tokenValue;
+                // advance the identifier
                 Parser.getInstance().AdvanceInput();
-                if (node.Parent != null)
-                {
-                    Controller.getInstance().MatchGrammarRule(Parser.getInstance().GetNextToken());
-                }
             }
         }
     }

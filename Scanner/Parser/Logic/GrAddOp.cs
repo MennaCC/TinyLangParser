@@ -12,25 +12,29 @@ namespace Parser.Logic
     {
         public override void execute(Node node)
         {
-            Token expectedToken = new Token();
-            expectedToken.TokenType = Scanner.Scanner.SPECIAL_SYMBOLS.PLUS.ToString();
-            Token secondExpectedToken = new Token();
-            secondExpectedToken.TokenType = Scanner.Scanner.SPECIAL_SYMBOLS.MINUS.ToString();
-            Boolean matched = MatchInput(expectedToken);
-            Boolean secondMatched = MatchInput(secondExpectedToken);
+          
+            // + or -
 
-            if (matched || secondMatched)
+            // prepare the expected tokens
+            Token plusToken = new Token();
+            plusToken.TokenType = Scanner.Scanner.SPECIAL_SYMBOLS.PLUS.ToString();
+            Token minusToken = new Token();
+            minusToken.TokenType = Scanner.Scanner.SPECIAL_SYMBOLS.MINUS.ToString();
+
+            // try to match + and -
+            Boolean plusMatched = MatchInput(plusToken);
+            Boolean minusMatched = MatchInput(minusToken);
+
+            //if any matched
+            if (plusMatched || minusMatched)
             {
-
+                //create a child for the matched addop
                 Node child = new Node();
                 child.Text = Parser.getInstance().GetNextToken().tokenValue;
                 node.AddChild(child);
-
+                // advance the operation 
                 Parser.getInstance().AdvanceInput();
-                if (node.Parent != null)
-                {
-                    Controller.getInstance().MatchGrammarRule(Parser.getInstance().GetNextToken());
-                }
+
             }
         }
     }
