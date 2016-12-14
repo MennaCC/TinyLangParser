@@ -52,7 +52,13 @@ namespace Parser.Logic
         /// Advance input 
         /// </summary>
         /// <param name="token"></param>
+<<<<<<< HEAD
         public void MatchExpression(Node node, Token token, GrammarRule GR)
+=======
+        
+        //MatchExpression
+        public void MatchExpression(Node node, Token token,GrammarRule Gr)
+>>>>>>> cb8d3f9efd5b44a743396225439ac4b542cacf30
         {
 
             Node nodeNew = new Node();
@@ -94,7 +100,8 @@ namespace Parser.Logic
             GrStmtSequence stmtSeq = new GrStmtSequence();
             stmtSeq.execute(node);
         }
-
+        // da elly ana 3mlah
+       
         public void Done() {
         }
         #endregion
