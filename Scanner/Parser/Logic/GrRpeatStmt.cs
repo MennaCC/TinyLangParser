@@ -9,7 +9,7 @@ using Parser.Tree;
 
 namespace Parser.Logic
 {
-    class GrRpeatStmt:GrammarRule
+    class GrRepeatStmt:GrammarRule
     {
         
   

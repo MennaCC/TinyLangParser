@@ -31,10 +31,10 @@ namespace Parser.Logic
         /// </summary>
         private void initGRDict()
         {
-            GRDict.Add(START_TOKEN.IDENTIFIER, new GrAssignStatement());
+            GRDict.Add(START_TOKEN.IDENTIFIER, new GrAssignStmt());
             GRDict.Add(START_TOKEN.IF, new GrIfStmt());
             GRDict.Add(START_TOKEN.READ, new GrReadStmt());
-            GRDict.Add(START_TOKEN.REPEAT, new GrRepeat());
+            GRDict.Add(START_TOKEN.REPEAT, new GrRepeatStmt());
             GRDict.Add(START_TOKEN.WRITE, new GrWriteStmt());
         }
         #endregion
@@ -52,13 +52,7 @@ namespace Parser.Logic
         /// Advance input 
         /// </summary>
         /// <param name="token"></param>
-<<<<<<< HEAD
         public void MatchExpression(Node node, Token token, GrammarRule GR)
-=======
-        
-        //MatchExpression
-        public void MatchExpression(Node node, Token token,GrammarRule Gr)
->>>>>>> cb8d3f9efd5b44a743396225439ac4b542cacf30
         {
 
             Node nodeNew = new Node();
