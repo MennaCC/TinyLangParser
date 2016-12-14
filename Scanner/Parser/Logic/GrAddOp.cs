@@ -28,10 +28,9 @@ namespace Parser.Logic
             //if any matched
             if (plusMatched || minusMatched)
             {
-                //create a child for the matched addop
-                Node child = new Node();
-                child.Text = Parser.getInstance().GetNextToken().tokenValue;
-                node.AddChild(child);
+                //edit the node text
+                node.Text = Parser.getInstance().GetNextToken().tokenValue;
+                
                 // advance the operation 
                 Parser.getInstance().AdvanceInput();
 

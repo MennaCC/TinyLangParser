@@ -27,10 +27,8 @@ namespace Parser.Logic
             //if any matched
             if (lessThanMatched || equalMatched)
             {
-                //create a child for the matched operation
-                Node child = new Node();
-                child.Text = Parser.getInstance().GetNextToken().tokenValue;
-                node.AddChild(child);
+                //edit the node text
+                node.Text = Parser.getInstance().GetNextToken().tokenValue;
                 // advance the comparison 
                 Parser.getInstance().AdvanceInput();
 

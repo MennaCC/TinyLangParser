@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Parser.CustomTree;
+using Scanner;
 
 namespace Parser.Logic
 {
@@ -14,16 +15,28 @@ namespace Parser.Logic
             // match first statement
             Controller.getInstance().MatchStatement(node, false);
             // match semicolon 
-
+            MatchSemiColon();
             // loop till there is no more tokens  
-            while (true)
+            while (Parser.getInstance().GetNextToken().tokenValue != "$")
             {
-                Controller.getInstance().MatchStatement(node, false);
+                
+                Controller.getInstance().MatchStatement(node.GetLastChild(), true);
+                MatchSemiColon();
             }
 
             // notify done 
             Controller.getInstance().Done();
             
+        }
+
+        private void MatchSemiColon() {
+            Token expToken = new Token();
+            expToken.TokenType = Scanner.Scanner.SPECIAL_SYMBOLS.SEMICOLON.ToString();
+
+            Boolean Matched = MatchInput(expToken);
+            if (Matched) {
+                Parser.getInstance().AdvanceInput();
+            }
         }
     }
 }
