@@ -8,13 +8,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Parser
+
+namespace Scanner
 {
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
+        }
+
+        
+        string code ;
+        Scanner scanner = new Scanner();
+        List<Token> tokens = new List<Token>();
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            DataGridView.Rows.Clear();
+            tokens.Clear();
+            UpdateTable();
+        }
+             
+
+        private void UpdateTable() {
+
+            code = codeLinesTextBox.Text;
+            tokens = scanner.getListOfTokens(code);
+
+            foreach (Token token in tokens)
+            {
+                DataGridView.Rows.Add(token.TokenType, token.tokenValue);
+            }
+            Parser.Parser.getInstance().init(code);
         }
     }
 }

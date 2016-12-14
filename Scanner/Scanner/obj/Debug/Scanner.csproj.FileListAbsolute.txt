@@ -13,3 +13,10 @@ C:\Users\Shimaa\Desktop\Parser\TinyLangParser\Scanner\Scanner\obj\Debug\Scanner.
 C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\bin\Debug\Scanner.exe.config
 C:\Users\Shimaa\Desktop\parser_tree\TinyLangParser\Scanner\Scanner\bin\Debug\Scanner.exe.config
 C:\Users\Hager\TinyLangParser\Scanner\Scanner\bin\Debug\Scanner.exe.config
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\bin\Debug\Scanner.exe
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\bin\Debug\Scanner.pdb
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\obj\Debug\Scanner.csprojResolveAssemblyReference.cache
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\obj\Debug\Scanner.Properties.Resources.resources
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\obj\Debug\Scanner.csproj.GenerateResource.Cache
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\obj\Debug\Scanner.exe
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Scanner\obj\Debug\Scanner.pdb

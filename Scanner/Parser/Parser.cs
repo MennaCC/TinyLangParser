@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Scanner;
+using Parser.Logic;
+using Parser.CustomTree;
 
 namespace Parser
 {
@@ -19,43 +21,48 @@ namespace Parser
             return instance;
         }
         #endregion
-        //list<token>
-        //instance of controller
-        //ip string
-        Token currentToken;
-        
+
+        #region Private Attributes
+        private List<Token> tokensList;
+        private Token currentToken;
+        private int currentTokenIndex = 0;
+        private Tree parserTree = new Tree();
+        #endregion
+
+        #region Public Methods
         /// <summary>
         /// main entry point
         /// calls get tokensList 
         /// calls controller
         /// </summary>
-        void init()
+        public void init(string ipProgram)
         {
-            
+            Scanner.Scanner scanner = new Scanner.Scanner();
+            tokensList = scanner.getListOfTokens(ipProgram);
+
+            currentToken = tokensList[currentTokenIndex];
+
+            GrStmtSequence stmtSeq = new GrStmtSequence();
+            stmtSeq.execute(parserTree.HeadNode);
         }
 
-        /// <summary>
-        /// get list of tokens from scanner
-        /// </summary>
-        void GetTokensList()
-        {
-            
-        }
         /// <summary>
         /// return current token
         /// </summary>
         /// <returns></returns>
         public Token GetNextToken()
         {
-            return null;
+            return tokensList[currentTokenIndex];
         }
         /// <summary>
         /// currentToken ++ 
         /// </summary>
         public void AdvanceInput()
         {
-
+            currentTokenIndex++;
+            currentToken = tokensList[currentTokenIndex];
         }
+        #endregion
 
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Parser.Tree
+namespace Parser.CustomTree
 {
-    class Tree
+    public class Tree
     {
         public Node HeadNode = new Node();
 

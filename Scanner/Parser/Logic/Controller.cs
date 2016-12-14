@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Scanner;
-using Parser.Tree;
+using Parser.CustomTree;
 
 namespace Parser.Logic
 {
@@ -31,18 +31,18 @@ namespace Parser.Logic
         /// </summary>
         private void initGRDict()
         {
-            GRDict.Add(START_TOKEN.IDENTIFIER, new GrAssignStmt());
-            GRDict.Add(START_TOKEN.IF, new GrIfStmt());
-            GRDict.Add(START_TOKEN.READ, new GrReadStmt());
-            GRDict.Add(START_TOKEN.REPEAT, new GrRepeatStmt());
-            GRDict.Add(START_TOKEN.WRITE, new GrWriteStmt());
+            GRDict.Add(START_TOKEN.IDENTIFIER.ToString(), new GrAssignStmt());
+            GRDict.Add(START_TOKEN.IF.ToString(), new GrIfStmt());
+            GRDict.Add(START_TOKEN.READ.ToString(), new GrReadStmt());
+            GRDict.Add(START_TOKEN.REPEAT.ToString(), new GrRepeatStmt());
+            GRDict.Add(START_TOKEN.WRITE.ToString(), new GrWriteStmt());
         }
         #endregion
 
         #region Private Attributes 
         private Node HeadNode = new Node();
         private enum START_TOKEN { IF, REPEAT, READ, WRITE, IDENTIFIER }
-        Dictionary<START_TOKEN, GrammarRule> GRDict = new Dictionary<START_TOKEN, GrammarRule>();
+        Dictionary<string, GrammarRule> GRDict = new Dictionary<string, GrammarRule>();
 
         #endregion
 
@@ -60,7 +60,6 @@ namespace Parser.Logic
             //Match Grammar Rule
             GR.execute(nodeNew);
         }
-
 
         /// <summary>
         /// Matches Statement to next token 
@@ -81,12 +80,11 @@ namespace Parser.Logic
             {
                 node.AddChild(newNode);
             }
-            //GR.execute(newNode);
-
             //match the current token to the next Grammar Rule
-
-
+            Token nextToken = Parser.getInstance().GetNextToken();
+            GRDict[nextToken.TokenType].execute(newNode);
             //advance the input 
+            Parser.getInstance().AdvanceInput();
 
         }
 
@@ -94,8 +92,7 @@ namespace Parser.Logic
             GrStmtSequence stmtSeq = new GrStmtSequence();
             stmtSeq.execute(node);
         }
-        // da elly ana 3mlah
-       
+               
         public void Done() {
         }
         #endregion

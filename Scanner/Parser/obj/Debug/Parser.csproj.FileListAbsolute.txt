@@ -1,0 +1,11 @@
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\bin\Debug\Parser.exe.config
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\obj\Debug\Parser.csprojResolveAssemblyReference.cache
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\obj\Debug\Scanner.Form1.resources
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\obj\Debug\Parser.Properties.Resources.resources
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\obj\Debug\Parser.csproj.GenerateResource.Cache
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\bin\Debug\Parser.exe
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\bin\Debug\Parser.pdb
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\bin\Debug\Scanner.exe
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\bin\Debug\Scanner.pdb
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\obj\Debug\Parser.exe
+C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\obj\Debug\Parser.pdb

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace Parser.Tree
+namespace Parser.CustomTree
 {
     public class Node
     {

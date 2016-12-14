@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Parser.Tree;
+using Parser.CustomTree;
 
 namespace Parser.Logic
 {
@@ -15,7 +15,7 @@ namespace Parser.Logic
             // if exp then stmtseq [else stmtseq] end
 
             // match exp
-            Controller.getInstance().MatchExpression(node, Parser.getInstance().GetNextToken());
+            Controller.getInstance().MatchExpression(node, Parser.getInstance().GetNextToken(), new GrExp());
 
             // match the then token  
             Token thenToken = new Token();

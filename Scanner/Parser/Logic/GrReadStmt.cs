@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Parser.Tree;
+using Parser.CustomTree;
 using Scanner;
 
 namespace Parser.Logic

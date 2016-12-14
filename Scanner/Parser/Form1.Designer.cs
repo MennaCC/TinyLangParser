@@ -1,4 +1,4 @@
-﻿namespace Parser
+﻿namespace Scanner
 {
     partial class Form1
     {
@@ -28,12 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.codeLinesTextBox = new System.Windows.Forms.TextBox();
+            this.DataGridView = new System.Windows.Forms.DataGridView();
+            this.TokenType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TokenValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // codeLinesTextBox
+            // 
+            this.codeLinesTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.codeLinesTextBox.Location = new System.Drawing.Point(2, 0);
+            this.codeLinesTextBox.Multiline = true;
+            this.codeLinesTextBox.Name = "codeLinesTextBox";
+            this.codeLinesTextBox.Size = new System.Drawing.Size(335, 376);
+            this.codeLinesTextBox.TabIndex = 0;
+            this.codeLinesTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // DataGridView
+            // 
+            this.DataGridView.AllowUserToDeleteRows = false;
+            this.DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TokenType,
+            this.TokenValue});
+            this.DataGridView.Location = new System.Drawing.Point(343, 0);
+            this.DataGridView.Name = "DataGridView";
+            this.DataGridView.ReadOnly = true;
+            this.DataGridView.RowHeadersVisible = false;
+            this.DataGridView.Size = new System.Drawing.Size(270, 376);
+            this.DataGridView.TabIndex = 2;
+            // 
+            // TokenType
+            // 
+            this.TokenType.HeaderText = "Token Type";
+            this.TokenType.Name = "TokenType";
+            this.TokenType.ReadOnly = true;
+            // 
+            // TokenValue
+            // 
+            this.TokenValue.HeaderText = "Token Value";
+            this.TokenValue.Name = "TokenValue";
+            this.TokenValue.ReadOnly = true;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(614, 381);
+            this.Controls.Add(this.DataGridView);
+            this.Controls.Add(this.codeLinesTextBox);
+            this.Name = "Form1";
+            this.Text = "Scanner";
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox codeLinesTextBox;
+        private System.Windows.Forms.DataGridView DataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TokenType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TokenValue;
     }
 }
 
