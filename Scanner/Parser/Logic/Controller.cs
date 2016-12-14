@@ -31,32 +31,39 @@ namespace Parser.Logic
         /// </summary>
         private void initGRDict()
         {
-            throw new NotImplementedException();
+            GRDict.Add(START_TOKEN.IDENTIFIER, new GrAssignStatement());
+            GRDict.Add(START_TOKEN.IF, new GrIfStmt());
+            GRDict.Add(START_TOKEN.READ, new GrReadStmt());
+            GRDict.Add(START_TOKEN.REPEAT, new GrRepeat());
+            GRDict.Add(START_TOKEN.WRITE, new GrWriteStmt());
         }
         #endregion
 
         #region Private Attributes 
-        List<GrammarRule> GRDict = new List<GrammarRule>();
         private Node HeadNode = new Node();
+        private enum START_TOKEN { IF, REPEAT, READ, WRITE, IDENTIFIER }
+        Dictionary<START_TOKEN, GrammarRule> GRDict = new Dictionary<START_TOKEN, GrammarRule>();
+
         #endregion
 
+        #region Public Methods
         /// <summary>
         /// calls appropriate Grammar Rule for a certain token
         /// Advance input 
         /// </summary>
         /// <param name="token"></param>
-        
-        //MatchExpression
-        public void MatchExpression(Node node, Token token)
+        public void MatchExpression(Node node, Token token, GrammarRule GR)
         {
-            throw new NotImplementedException();
-            //Don't Advance 
-            //Created node is always a child
+
+            Node nodeNew = new Node();
+            node.AddChild(nodeNew);
+            //Match Grammar Rule
+            GR.execute(nodeNew);
         }
 
 
         /// <summary>
-        /// ana hna haftared en elly gayly mn west el function da lazem hyb2a child
+        /// Matches Statement to next token 
         /// </summary>
         /// <param name="node"></param>
         /// <param name="GR"></param>
@@ -68,13 +75,19 @@ namespace Parser.Logic
             Node newNode = new Node();
             if (isSibling)
             {
-                throw new NotImplementedException();
+                node.AddSibling(newNode);
             }
             else
             {
                 node.AddChild(newNode);
             }
             //GR.execute(newNode);
+
+            //match the current token to the next Grammar Rule
+
+
+            //advance the input 
+
         }
 
         public void MatchStatmentSequence(Node node) {
@@ -84,5 +97,6 @@ namespace Parser.Logic
 
         public void Done() {
         }
+        #endregion
     }
 }

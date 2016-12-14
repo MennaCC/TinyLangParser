@@ -44,6 +44,14 @@ namespace Parser.Tree
             n.Parent = this;
         }
 
+        public Node GetLastChild()
+        {
+            if(Children.Count != 0){
+                return Children.Last();
+            }
+            return null;
+        }
+
         public void AddChild(string text)
         {
             Node temp = new Node(text);
