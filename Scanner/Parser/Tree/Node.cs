@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Parser.Tree
 {
@@ -66,7 +67,12 @@ namespace Parser.Tree
         #region Drawing
         public void DrawNode()
         {
-            throw new NotImplementedException();
+            //System.Drawing.Graphics graphics = this.CreateGraphics();
+            //System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(
+            //   50, 50, 60, 60);
+            //graphics.DrawEllipse(System.Drawing.Pens.Black, rectangle);
+            //throw new NotImplementedException();
+            
         }
         /// <summary>
         /// m4 h3melo byrsem el node nafsaha 34an mttresem4 mrteen 
