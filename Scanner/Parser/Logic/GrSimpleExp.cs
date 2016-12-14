@@ -31,9 +31,11 @@ namespace Parser.Logic
                     
                     Controller.getInstance().MatchExpression(node,op,addop);
                     Controller.getInstance().MatchExpression(node,op,Term);
-                }
+                    op = Parser.getInstance().GetNextToken();
 
             }
+
+        }
         }
     }
 

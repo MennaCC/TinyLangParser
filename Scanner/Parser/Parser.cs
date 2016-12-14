@@ -44,6 +44,7 @@ namespace Parser
 
             GrStmtSequence stmtSeq = new GrStmtSequence();
             stmtSeq.execute(parserTree.HeadNode);
+            Node node = parserTree.HeadNode;
         }
 
         /// <summary>

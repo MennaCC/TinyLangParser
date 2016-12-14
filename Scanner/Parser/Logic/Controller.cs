@@ -97,7 +97,7 @@ namespace Parser.Logic
         }
                
         public void Done() {
-            int x = 5;
+            
         }
         #endregion
     }

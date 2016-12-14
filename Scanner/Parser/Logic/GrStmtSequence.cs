@@ -24,6 +24,10 @@ namespace Parser.Logic
                     Controller.getInstance().MatchStatement(node.GetLastChild(), true);
                     MatchSemiColon();
 
+                    // handle the if and repeat end of stmt_seq
+                    string endCheck = Parser.getInstance().GetNextToken().tokenValue;
+                    if (endCheck == "end" || endCheck == "until") return;
+
                 }
                 
             }

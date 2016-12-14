@@ -25,10 +25,11 @@ namespace Parser.Logic
             {
                 Controller.getInstance().MatchExpression(node,op,malop);
                 Controller.getInstance().MatchExpression(node,op,factor);
-                
+                op = Parser.getInstance().GetNextToken();
+
             }
 
-          
+
 
         }
     }
