@@ -16,7 +16,16 @@ namespace Parser.Logic
         /// </summary>
         /// <param name="t"></param>
         public virtual void execute(Node node) { }
-        protected Boolean MatchInput(Token t) { return true; }
+        protected Boolean MatchInput(Token t)
+        {
+            if (Parser.getInstance().GetNextToken().TokenType == t.TokenType)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
       
     }
 }
