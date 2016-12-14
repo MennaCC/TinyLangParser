@@ -19,9 +19,13 @@ namespace Parser.Logic
             // loop till there is no more tokens  
             while (Parser.getInstance().GetNextToken().tokenValue != "$")
             {
+                if (node.GetLastChild() != null) {
+
+                    Controller.getInstance().MatchStatement(node.GetLastChild(), true);
+                    MatchSemiColon();
+
+                }
                 
-                Controller.getInstance().MatchStatement(node.GetLastChild(), true);
-                MatchSemiColon();
             }
 
             // notify done 

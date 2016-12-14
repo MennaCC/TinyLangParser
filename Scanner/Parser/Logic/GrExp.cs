@@ -27,6 +27,7 @@ namespace Parser.Logic
            
             if (Parser.getInstance().GetNextToken().TokenType == compop1 || Parser.getInstance().GetNextToken().TokenType == compop2)
             {
+                Controller.getInstance().MatchExpression(node, Parser.getInstance().GetNextToken(), new GrComparisonOp());
                 Controller.getInstance().MatchExpression(node,Parser.getInstance().GetNextToken(),sexp);
                // Parser.getInstance().AdvanceInput();
             }

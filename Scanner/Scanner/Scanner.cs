@@ -91,6 +91,7 @@ namespace Scanner
                         if (character == '=')
                         {
                             currentTokenValue += character;
+                            i++;
                             state = STATES.DONE.ToString();
 
                         }
@@ -144,8 +145,13 @@ namespace Scanner
                         lastState = STATES.DONE.ToString();
                         break;
                 }
-                if (state != "DONE" || lastState != "DONE") { i++; }
+                if (state == "DONE" || lastState == "DONE") { }
+                else { i++; }
             }
+            Token endOfTokens = new Token();
+            endOfTokens.TokenType = "THEEND";
+            endOfTokens.tokenValue = "$";
+            tokensList.Add(endOfTokens);
             return tokensList;
         }
 

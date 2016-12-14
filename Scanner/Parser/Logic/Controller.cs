@@ -76,15 +76,18 @@ namespace Parser.Logic
             {
                 node.AddSibling(newNode);
             }
+
             else
             {
                 node.AddChild(newNode);
             }
             //match the current token to the next Grammar Rule
             Token nextToken = Parser.getInstance().GetNextToken();
-            GRDict[nextToken.TokenType].execute(newNode);
-            //advance the input 
+            GrammarRule gr = GRDict[nextToken.TokenType];
             Parser.getInstance().AdvanceInput();
+            gr.execute(newNode);
+            //advance the input 
+            //Parser.getInstance().AdvanceInput();
 
         }
 
@@ -94,6 +97,7 @@ namespace Parser.Logic
         }
                
         public void Done() {
+            int x = 5;
         }
         #endregion
     }
