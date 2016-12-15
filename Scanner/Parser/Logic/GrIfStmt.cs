@@ -40,7 +40,7 @@ namespace Parser.Logic
                 
                 //get the next token which must be end 
                 nextToken = Parser.getInstance().GetNextToken();
-                if (nextToken.tokenValue == Scanner.Scanner.RESERVED_WORDS.END.ToString())
+                if (nextToken.TokenType == Scanner.Scanner.RESERVED_WORDS.END.ToString())
                 {
                     //advance the end token 
                     Parser.getInstance().AdvanceInput();
