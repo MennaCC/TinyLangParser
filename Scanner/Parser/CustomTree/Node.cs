@@ -33,6 +33,8 @@ namespace Parser.CustomTree
 
         public bool isLeaf = true;
         public bool isLonely = true;
+
+        public Point position;
         #endregion
 
         #region Public Functions
@@ -75,12 +77,16 @@ namespace Parser.CustomTree
         #region Drawing
         public void DrawNode()
         {
-            //System.Drawing.Graphics graphics = this.CreateGraphics();
-            //System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(
-            //   50, 50, 60, 60);
-            //graphics.DrawEllipse(System.Drawing.Pens.Black, rectangle);
-            //throw new NotImplementedException();
-            
+
+            TreeForm draw = TreeForm.getInstance();
+            System.Drawing.Graphics graphics = draw.CreateGraphics();
+            System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(
+                50, 100, 60, 60);
+            graphics.DrawEllipse(System.Drawing.Pens.Black, rectangle);
+
+            draw.Show();
+            draw.Refresh();
+
         }
         /// <summary>
         /// m4 h3melo byrsem el node nafsaha 34an mttresem4 mrteen 

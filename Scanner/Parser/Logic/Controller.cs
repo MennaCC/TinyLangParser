@@ -107,6 +107,8 @@ namespace Parser.Logic
         }
                
         public void Done() {
+
+            Parser.getInstance().DrawTree();
             
         }
         #endregion

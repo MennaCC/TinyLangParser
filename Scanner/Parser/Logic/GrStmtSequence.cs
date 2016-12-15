@@ -33,7 +33,10 @@ namespace Parser.Logic
             }
 
             // notify done 
-            Controller.getInstance().Done();
+            if (node.Level == 0) {
+                Controller.getInstance().Done();
+            }
+            
             
         }
 

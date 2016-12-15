@@ -26,7 +26,7 @@ namespace Parser
         private List<Token> tokensList;
         private Token currentToken;
         private int currentTokenIndex = 0;
-        private Tree parserTree = new Tree();
+        public Tree parserTree = new Tree();
         #endregion
 
         #region Public Methods
@@ -62,6 +62,10 @@ namespace Parser
         {
             currentTokenIndex++;
             currentToken = tokensList[currentTokenIndex];
+        }
+
+        public void DrawTree() {
+            this.parserTree.Draw();
         }
         #endregion
 
