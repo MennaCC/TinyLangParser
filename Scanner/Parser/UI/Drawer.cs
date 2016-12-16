@@ -15,13 +15,33 @@ namespace Parser.UI
 
 
         #region Private Attributes
+<<<<<<< HEAD
         private Parser parserInstance = Parser.getInstance();
         private Dictionary<int, List<Node>> nodesLevelsMap = new Dictionary<int, List<Node>>();
+||||||| merged common ancestors
+        private Dictionary<int, List<Node>> nodesLevelsMap = new Dictionary<int, List<Node>>();
+=======
+        public Dictionary<int, List<Node>> nodesLevelsMap = new Dictionary<int, List<Node>>();
+>>>>>>> b4ee88bbedd5bbd2d8d7fbed0c853f420a9e3835
         #endregion
 
         #region Public Attributes
         public List<RectangleF> nodesList = new List<RectangleF>();
+<<<<<<< HEAD
         public List<KeyValuePair<Point, Point>> edgesList = new List<KeyValuePair<Point, Point>>();
+||||||| merged common ancestors
+        public List<RectangleF> edgesList = new List<RectangleF>();
+=======
+        public List<RectangleF> edgesList = new List<RectangleF>();
+        public int NumberOfLevel;
+        public int HeightForm;
+        public int WidthForm;
+        public List<Node> value = new List<Node>();
+        public int key3;
+        public  int CountN =0;
+        Node n;
+
+>>>>>>> b4ee88bbedd5bbd2d8d7fbed0c853f420a9e3835
         #endregion
 
         #region Singleton
@@ -47,7 +67,18 @@ namespace Parser.UI
         /// 
         public void DrawGraphicalObjects(object sender, PaintEventArgs e)
         {
+<<<<<<< HEAD
             e.Graphics.DrawRectangles(drawingPen, nodesList.ToArray());
+||||||| merged common ancestors
+            e.Graphics.DrawRectangles(Pens.HotPink, edgesList.ToArray());
+            e.Graphics.DrawRectangles(Pens.HotPink, nodesList.ToArray());
+=======
+
+            //e.Graphics.DrawRectangles(Pens.HotPink, edgesList.ToArray());
+            //e.Graphics.DrawRectangles(Pens.HotPink, nodesList.ToArray());
+          //  DrawEdges();
+            CreateGraphicObject();
+>>>>>>> b4ee88bbedd5bbd2d8d7fbed0c853f420a9e3835
         }
 
         private void DrawEdges(PaintEventArgs e)
@@ -71,6 +102,33 @@ namespace Parser.UI
         /// </summary>
         private void CreateGNodes()
         {
+            NumberOfLevel = nodesLevelsMap.Count;
+
+            HeightForm = TreeForm.getInstance().ClientRectangle.Height;
+            WidthForm = TreeForm.getInstance().ClientRectangle.Width;
+
+            foreach (var kvp in nodesLevelsMap)
+            {
+                value = kvp.Value;
+                key3 = kvp.Key;
+                foreach(Node v in value)
+                {
+                    CountN++; 
+                    v.position.Y =((key3 *(HeightForm/NumberOfLevel))+((HeightForm/NumberOfLevel)/2));
+                    v.position.X = (((WidthForm/value.Count)*CountN)/2)+CountN;
+                    CreateGraphicObject();
+                }
+                CountN = 0;
+
+            }
+
+        }
+        public void CreateGraphicObject()
+        {
+          
+            Graphics g = TreeForm.getInstance().CreateGraphics();
+            g.DrawEllipse(Pens.Red, n.position.X, n.position.Y, 60, 60);
+            nodesList.Add(g);
 
         }
         #endregion

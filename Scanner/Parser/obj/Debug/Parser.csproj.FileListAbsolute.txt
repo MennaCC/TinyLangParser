@@ -20,3 +20,6 @@ C:\Users\Shimaa\Desktop\parser_tree\TinyLangParser\Scanner\Parser\obj\Debug\Pars
 C:\Users\Shimaa\Desktop\parser_tree\TinyLangParser\Scanner\Parser\obj\Debug\Scanner.Form1.resources
 C:\Users\Shimaa\Desktop\parser_tree\TinyLangParser\Scanner\Parser\obj\Debug\Parser.Properties.Resources.resources
 C:\Users\Shimaa\Desktop\parser_tree\TinyLangParser\Scanner\Parser\obj\Debug\Parser.csproj.GenerateResource.Cache
+C:\Users\Hager\TinyLangParser\Scanner\Parser\bin\Debug\Parser.exe.config
+C:\Users\Hager\TinyLangParser\Scanner\Parser\obj\Debug\Parser.exe
+C:\Users\Hager\TinyLangParser\Scanner\Parser\obj\Debug\Parser.pdb
