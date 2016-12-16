@@ -20,7 +20,7 @@ namespace Parser.UI
         #endregion
 
         #region Public Attributes
-        public List<Graphics> nodesList = new List<Graphics>();
+        public List<RectangleF> nodesList = new List<RectangleF>();
         public List<KeyValuePair<Point, Point>> edgesList = new List<KeyValuePair<Point, Point>>();
 
         public int NumberOfLevel;
@@ -56,8 +56,8 @@ namespace Parser.UI
         /// 
         public void DrawGraphicalObjects(object sender, PaintEventArgs e)
         {
+            e.Graphics.DrawRectangles(Pens.Red, nodesList.ToArray());
             DrawEdges(e);
-            CreateGraphicObject();
         }
 
         private void DrawEdges(PaintEventArgs e)
@@ -95,20 +95,20 @@ namespace Parser.UI
                     CountN++; 
                     v.position.Y =((key3 *(HeightForm/NumberOfLevel))+((HeightForm/NumberOfLevel)/2));
                     v.position.X = (((WidthForm/value.Count)*CountN)/2)+CountN;
-                    CreateGraphicObject();
+                    CreateGraphicObject(v);
                 }
                 CountN = 0;
             }
 
         }
-        public void CreateGraphicObject()
+        public void CreateGraphicObject(Node n)
         {
-          
-            Graphics g = TreeForm.getInstance().CreateGraphics();
-            g.DrawEllipse(Pens.Red, n.position.X, n.position.Y, 60, 60);
-            nodesList.Add(g);
-
+           
+            RectangleF rect = new RectangleF(n.position.X, n.position.Y, 60, 60);
+            nodesList.Add(rect);
         }
+      
+
         #endregion
         #endregion
 
