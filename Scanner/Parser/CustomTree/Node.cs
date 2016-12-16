@@ -37,9 +37,11 @@ namespace Parser.CustomTree
         public bool         isLonely    { get; set; }
 
         public string       Text        { get; set; }
-        public Point        position    { get; set; }
         #endregion
 
+        #region Public Atttributes
+        public Point position = new Point();
+        #endregion
 
         #region Public Functions
         #region Adding Child

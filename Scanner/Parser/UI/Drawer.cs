@@ -15,24 +15,14 @@ namespace Parser.UI
 
 
         #region Private Attributes
-<<<<<<< HEAD
         private Parser parserInstance = Parser.getInstance();
         private Dictionary<int, List<Node>> nodesLevelsMap = new Dictionary<int, List<Node>>();
-||||||| merged common ancestors
-        private Dictionary<int, List<Node>> nodesLevelsMap = new Dictionary<int, List<Node>>();
-=======
-        public Dictionary<int, List<Node>> nodesLevelsMap = new Dictionary<int, List<Node>>();
->>>>>>> b4ee88bbedd5bbd2d8d7fbed0c853f420a9e3835
         #endregion
 
         #region Public Attributes
-        public List<RectangleF> nodesList = new List<RectangleF>();
-<<<<<<< HEAD
+        public List<Graphics> nodesList = new List<Graphics>();
         public List<KeyValuePair<Point, Point>> edgesList = new List<KeyValuePair<Point, Point>>();
-||||||| merged common ancestors
-        public List<RectangleF> edgesList = new List<RectangleF>();
-=======
-        public List<RectangleF> edgesList = new List<RectangleF>();
+
         public int NumberOfLevel;
         public int HeightForm;
         public int WidthForm;
@@ -41,7 +31,6 @@ namespace Parser.UI
         public  int CountN =0;
         Node n;
 
->>>>>>> b4ee88bbedd5bbd2d8d7fbed0c853f420a9e3835
         #endregion
 
         #region Singleton
@@ -67,18 +56,8 @@ namespace Parser.UI
         /// 
         public void DrawGraphicalObjects(object sender, PaintEventArgs e)
         {
-<<<<<<< HEAD
-            e.Graphics.DrawRectangles(drawingPen, nodesList.ToArray());
-||||||| merged common ancestors
-            e.Graphics.DrawRectangles(Pens.HotPink, edgesList.ToArray());
-            e.Graphics.DrawRectangles(Pens.HotPink, nodesList.ToArray());
-=======
-
-            //e.Graphics.DrawRectangles(Pens.HotPink, edgesList.ToArray());
-            //e.Graphics.DrawRectangles(Pens.HotPink, nodesList.ToArray());
-          //  DrawEdges();
+            DrawEdges(e);
             CreateGraphicObject();
->>>>>>> b4ee88bbedd5bbd2d8d7fbed0c853f420a9e3835
         }
 
         private void DrawEdges(PaintEventArgs e)
@@ -119,7 +98,6 @@ namespace Parser.UI
                     CreateGraphicObject();
                 }
                 CountN = 0;
-
             }
 
         }
@@ -162,15 +140,15 @@ namespace Parser.UI
         /// </summary>
         private void CreateGEdges()
         {
-            
+            Node HeadNode = parserInstance.parserTree.HeadNode;
+            ConnectChildrenNodesRecursive(HeadNode);
+            ConnectSiblingNodesRecursive(HeadNode);
         }
 
         private void ConnectChildrenNodesRecursive(Node parentNode)
         {
             if (parentNode.isLeaf)
                 return;
-
-            KeyValuePair<Point, Point> pair;
             {
                 //create edges between the node and each of its children
                 foreach(Node childNode in parentNode.Children)
@@ -207,7 +185,6 @@ namespace Parser.UI
             KeyValuePair<Point, Point> pair = new KeyValuePair<Point, Point>(start.position, end.position);
             edgesList.Add(pair);
         }
-    }
 
         #endregion
         #endregion

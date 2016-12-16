@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parser.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,13 +30,9 @@ namespace Parser.CustomTree
             return nodesList;
         }
 
-        public void Draw(/*sth to draw on from the UI*/)
+        public void Draw()
         {
-            HeadNode.DrawNode();
-            if(!(HeadNode.isLeaf && HeadNode.isLonely))
-            {
-                HeadNode.CreateEdgesRecursive();
-            }
+            throw new NotImplementedException();
         }
     }
 }
