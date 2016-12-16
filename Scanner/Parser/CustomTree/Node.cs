@@ -15,36 +15,43 @@ namespace Parser.CustomTree
         {
             this.Text = txt;
         }
-        public Node() { }
+        public Node()
+        {
+            Children = new List<Node>();
+            Siblings = new List<Node>();
+            Level = 0;
+            isLeaf = true;
+            isLonely = true;
+        }
         #endregion
 
-        #region Attributes
-        /// <summary>
-        /// Children Nodes
-        /// </summary>
-        private List<Node> Children = new List<Node>();
-        /// <summary>
-        /// Sibling Nodes
-        /// </summary>
-        public List<Node> Siblings = new List<Node>();
-        public Node Parent;
-        public string Text;
-        public int Level = 0;
+        #region Properties 
+        public List<Node>   Children    { get; }
+        public List<Node>   Siblings    { get; }
 
-        public bool isLeaf = true;
-        public bool isLonely = true;
+        public Tree         ownerTree   { get; set; }
+        public Node         Parent      { get; set; }
 
-        public Point position;
+        public int          Level       { get; set; }
+        public bool         isLeaf      { get; set; }
+        public bool         isLonely    { get; set; }
+
+        public string       Text        { get; set; }
+        public Point        position    { get; set; }
         #endregion
+
 
         #region Public Functions
         #region Adding Child
         public void AddChild(Node n)
         {
             Children.Add(n);
-            this.isLeaf = false;
+
+            isLeaf = false;
             n.Level = this.Level + 1;
             n.Parent = this;
+
+            addOwnerTree(n);
         }
 
         public Node GetLastChild()
@@ -65,8 +72,10 @@ namespace Parser.CustomTree
         public void AddSibling(Node n)
         {
             Siblings.Add(n);
-            this.isLonely = false;
+            isLonely = false;
             n.Level = this.Level;
+
+            addOwnerTree(n);
         }
         public void AddSibling(string txt)
         {
@@ -74,7 +83,9 @@ namespace Parser.CustomTree
             Siblings.Add(tmp);
         }
         #endregion
-        #region Drawing
+        #endregion
+
+        #region Private Functions
         public void DrawNode()
         {
 
@@ -88,43 +99,12 @@ namespace Parser.CustomTree
             draw.Refresh();
 
         }
-        /// <summary>
-        /// m4 h3melo byrsem el node nafsaha 34an mttresem4 mrteen 
-        /// w ha5ally el headnode bas hya elly bttresem fl awel
-        /// </summary>
-        public void DrawRecursive(/*sth to draw on brdo :v*/)
+ 
+        private void addOwnerTree(Node n)
         {
-            if (!isLeaf)
+            if (n.ownerTree == null)
             {
-                this.DrawChildren();
-            }
-            else
-            {
-                this.DrawNode();
-            }
-
-            if(Siblings.Count != 0)
-            {
-                this.DrawSiblings();
-            }
-            
-        }
-        #endregion
-        #endregion
-
-        #region Private Functions
-        private void DrawSiblings()
-        {
-            foreach(Node sib in Siblings)
-            {
-                sib.DrawRecursive();
-            }
-        }
-        private void DrawChildren()
-        {
-            foreach(Node child in Children)
-            {
-                child.DrawRecursive();
+                n.ownerTree = this.ownerTree;
             }
         }
         #endregion
