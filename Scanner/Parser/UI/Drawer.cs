@@ -13,7 +13,7 @@ namespace Parser.UI
     {
 
         #region Private Attributes
-        public Dictionary<int, List<Node>> nodesLevelsMap = new Dictionary<int, List<Node>>();
+        private Dictionary<int, List<Node>> nodesLevelsMap = new Dictionary<int, List<Node>>();
         #endregion
 
         #region Public Attributes
@@ -51,11 +51,9 @@ namespace Parser.UI
         /// 
         public void DrawGraphicalObjects(object sender, PaintEventArgs e)
         {
-
-            //e.Graphics.DrawRectangles(Pens.HotPink, edgesList.ToArray());
-            //e.Graphics.DrawRectangles(Pens.HotPink, nodesList.ToArray());
-          //  DrawEdges();
-            CreateGraphicObject();
+            e.Graphics.DrawRectangles(Pens.Red, nodesList.ToArray());
+          
+            
         }
 
         /// <summary>
@@ -86,21 +84,22 @@ namespace Parser.UI
                     CountN++; 
                     v.position.Y =((key3 *(HeightForm/NumberOfLevel))+((HeightForm/NumberOfLevel)/2));
                     v.position.X = (((WidthForm/value.Count)*CountN)/2)+CountN;
-                    CreateGraphicObject();
+                    CreateGraphicObject(v);
                 }
                 CountN = 0;
 
             }
 
         }
-        public void CreateGraphicObject()
+        public void CreateGraphicObject(Node n)
         {
-          
-            Graphics g = TreeForm.getInstance().CreateGraphics();
-            g.DrawEllipse(Pens.Red, n.position.X, n.position.Y, 60, 60);
-            nodesList.Add(g);
 
+           
+            RectangleF rect = new RectangleF(n.position.X, n.position.Y, 60, 60);
+            nodesList.Add(rect);
         }
+      
+
         #endregion
         #endregion
 

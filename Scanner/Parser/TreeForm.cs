@@ -25,5 +25,11 @@ namespace Parser
 
             return instance;
         }
+        
+
+        private void TreeForm_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
