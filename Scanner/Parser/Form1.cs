@@ -13,12 +13,23 @@ namespace Scanner
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private Form1()
         {
             InitializeComponent();
         }
 
-        
+        private static Form1 instance = new Form1();
+
+        public static Form1 getInstance()
+        {
+            if (instance != null)
+                instance = new Form1();
+
+            return instance;
+        }
+
+
+
         string code ;
         Scanner scanner = new Scanner();
         List<Token> tokens = new List<Token>();

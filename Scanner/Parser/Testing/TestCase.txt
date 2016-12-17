@@ -6,6 +6,9 @@
         repeat 
            fact  := fact *  x;
             x  := x  -  1
+			ali
         until  x  =  0;
         write  fact   {  output  factorial of x }
      end  
+
+	

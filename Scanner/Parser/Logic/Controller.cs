@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Scanner;
 using Parser.CustomTree;
 using Parser.UI;
+using System.Windows.Forms;
 
 namespace Parser.Logic
 {
@@ -95,12 +96,20 @@ namespace Parser.Logic
             }
             //match the current token to the next Grammar Rule
             Token nextToken = Parser.getInstance().GetNextToken();
-            GrammarRule gr = GRDict[nextToken.TokenType];
-            Parser.getInstance().AdvanceInput();
-            newNode.Text = gr.GetType().ToString();
-            gr.execute(newNode);
-            //advance the input 
-            //Parser.getInstance().AdvanceInput();
+            GrammarRule gr;
+            // try to match the token with some statement
+            if (GRDict.TryGetValue(nextToken.TokenType, out gr))
+            {
+                Parser.getInstance().AdvanceInput();
+                newNode.Text = gr.GetType().ToString();
+                gr.execute(newNode);
+            }
+            else
+            {
+                MessageBox.Show("You are not following the grammar rules.");
+                Form1.getInstance().Close();
+                Application.Exit();
+            }     
 
         }
 
