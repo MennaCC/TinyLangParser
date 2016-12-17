@@ -16,11 +16,12 @@ namespace Parser.UI
         }
 
         #region Drawing Properties
-        private const int   G_NODE_WIDTH = 30;
-        private const int   G_NODE_HEIGHT = 30;
+        private const int   G_NODE_WIDTH = 50;
+        private const int   G_NODE_HEIGHT = 40;
         private Pen         DRAWING_PEN = Pens.HotPink;
         private Brush       TEXT_BRUSH = Brushes.HotPink;
-        private Font        TEXT_FONT = new Font(SystemFonts.CaptionFont, FontStyle.Italic);
+        private Brush       FILL_BRUSH = Brushes.Bisque;
+        private Font        TEXT_FONT = new Font(SystemFonts.IconTitleFont, FontStyle.Bold);
 
         #endregion
 
@@ -65,12 +66,13 @@ namespace Parser.UI
 
             if (doneParsing && nodesList.Count != 0)
             {
-                foreach(Rectangle rect in nodesList.Keys)
+                DrawEdges(e);
+                foreach (Rectangle rect in nodesList.Keys)
                 {
-                    e.Graphics.DrawRectangle(Pens.Red, rect);
+                    e.Graphics.DrawRectangle(DRAWING_PEN, rect);
+                    e.Graphics.FillRectangle(FILL_BRUSH, rect);
                     e.Graphics.DrawString(nodesList[rect], TEXT_FONT, TEXT_BRUSH, rect);
                 }
-                DrawEdges(e);
             }
         }
 
@@ -126,7 +128,6 @@ namespace Parser.UI
                 }
                 CountN = 0;
             }
-
         }
 
         private void AddGnode(Node n)

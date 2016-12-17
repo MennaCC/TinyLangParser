@@ -37,11 +37,12 @@ namespace Parser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 330);
+            this.ClientSize = new System.Drawing.Size(984, 609);
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "TreeForm";
             this.Text = "TreeForm";
             this.Load += new System.EventHandler(this.TreeForm_Load);
-            this.Paint += new PaintEventHandler(Drawer.getInstance().DrawGraphicalObjects);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.TreeForm_Paint);
             this.ResumeLayout(false);
 
         }

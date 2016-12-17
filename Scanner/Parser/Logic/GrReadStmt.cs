@@ -20,7 +20,7 @@ namespace Parser.Logic
             if (matched)
             {
                 // modify the read node text to add the identifier name
-                node.Text = node.Text + " " + Parser.getInstance().GetNextToken().tokenValue;
+                node.Text = node.Text + "\n(" + Parser.getInstance().GetNextToken().tokenValue+")";
                 // advance the identifier
                 Parser.getInstance().AdvanceInput();
             }

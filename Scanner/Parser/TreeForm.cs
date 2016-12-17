@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parser.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,11 @@ namespace Parser
         private void TreeForm_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void TreeForm_Paint(object sender, PaintEventArgs e)
+        {
+            Drawer.getInstance().DrawGraphicalObjects(sender, e);
         }
     }
 }

@@ -56,7 +56,10 @@ namespace Parser.Logic
         /// <param name="token"></param>
         public void MatchExpression(Node node, Token token, GrammarRule GR)
         {
-            string grType = GR.GetType().ToString();
+            string grTypyFull = GR.GetType().ToString();
+            string grType = grTypyFull.Substring(grTypyFull.LastIndexOf('.') + 1);
+            if (grType[0] == 'G')
+                grType = grType.Substring(2);
             if (GR.GetType() == typeof(GrExp))
             {
                 Node nodeNew = new Node(grType);
@@ -96,12 +99,17 @@ namespace Parser.Logic
             }
             //match the current token to the next Grammar Rule
             Token nextToken = Parser.getInstance().GetNextToken();
+
             GrammarRule gr;
             // try to match the token with some statement
             if (GRDict.TryGetValue(nextToken.TokenType, out gr))
             {
                 Parser.getInstance().AdvanceInput();
-                newNode.Text = gr.GetType().ToString();
+                string grTypeFull = gr.GetType().ToString();
+                string grType = grTypeFull.Substring(grTypeFull.LastIndexOf('.') + 1);
+                if (grType[0] == 'G')
+                    grType = grType.Substring(2);
+                newNode.Text = grType;
                 gr.execute(newNode);
             }
             else
@@ -110,7 +118,6 @@ namespace Parser.Logic
                 Form1.getInstance().Close();
                 Application.Exit();
             }     
-
         }
 
         public void MatchStatmentSequence(Node node) {
