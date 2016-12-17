@@ -33,7 +33,6 @@ namespace Parser.Logic
                 Parser.getInstance().AdvanceInput();
 
             }
-
         }
     }
 }

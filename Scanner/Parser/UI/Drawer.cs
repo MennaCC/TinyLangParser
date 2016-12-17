@@ -33,7 +33,7 @@ namespace Parser.UI
         }
 
         #region Drawing Properties
-        private const int   G_NODE_WIDTH = 50;
+        private const int   G_NODE_WIDTH = 70;
         private const int   G_NODE_HEIGHT = 40;
         private Pen         DRAWING_PEN = Pens.HotPink;
         private Brush       TEXT_BRUSH = Brushes.HotPink;
@@ -53,7 +53,7 @@ namespace Parser.UI
 
         #region Public Attributes
         public List<Node> value = new List<Node>();
-        public int HeightForm, WidthForm, NumberOfLevel, CountN = 0, key3;
+        public int HeightForm, WidthForm, NumberOfLevel, CountN = 0, key3,CountN1=0;
         #endregion
 
         #region Singleton
@@ -139,11 +139,13 @@ namespace Parser.UI
                 foreach (Node v in value)
                 {
                     CountN++;
-                    v.position.Y = ((key3 * (HeightForm / NumberOfLevel)) + ((HeightForm / NumberOfLevel) / 2));
-                    v.position.X = (((WidthForm / value.Count) * CountN) / 2) + CountN;
+                    v.position.Y = ((key3 * (HeightForm / NumberOfLevel)) - (HeightForm / NumberOfLevel));
+                    v.position.X = ((((WidthForm+400)/ value.Count) * CountN) / 2) + (CountN1+G_NODE_WIDTH);
+                    CountN1++;
                     AddGnode(v);
                 }
                 CountN = 0;
+                CountN1 = 0;
             }
         }
 

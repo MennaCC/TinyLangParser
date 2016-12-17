@@ -16,7 +16,9 @@ namespace Parser
         private TreeForm()
         {
             InitializeComponent();
+        
         }
+       
         private static TreeForm instance = new TreeForm();
 
         public static TreeForm getInstance()
@@ -29,12 +31,17 @@ namespace Parser
 
         private void TreeForm_Load(object sender, EventArgs e)
         {
-            
+       
         }
 
         private void TreeForm_Paint(object sender, PaintEventArgs e)
         {
             Drawer.getInstance().DrawGraphicalObjects(sender, e);
+        }
+
+        private void TreeForm_Resize(object sender, EventArgs e)
+        {
+           // this.Invalidate();
         }
     }
 }
