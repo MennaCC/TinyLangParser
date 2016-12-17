@@ -12,6 +12,23 @@ namespace Parser.UI
         public void initAndDraw()
         {
             doneParsing = true;
+            List<Node> untieChildrenList = new List<Node>();
+            foreach (Node node in parserInstance.parserTree.getNodesList())
+            {
+                if(node.Text == "Factor" && node.Children.Count == 1)
+                {
+                    node.Text = node.Children[0].Text;
+                    untieChildrenList.Add(node.Children[0]);
+                    node.Children.Clear();
+                }
+            }
+            if(untieChildrenList.Count > 0)
+            {
+                foreach(Node n in untieChildrenList)
+                {
+                    parserInstance.parserTree.UntieChild(n);
+                }
+            }
             CreateAndDrawGObjects();
         }
 

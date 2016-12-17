@@ -29,5 +29,17 @@ namespace Parser.CustomTree
         {
             return nodesList;
         }
+
+        public void UntieChild(Node node)
+        {
+            foreach (Node n in nodesList)
+            {
+                if (node.Equals(n))
+                {
+                    nodesList.Remove(n);
+                    break;
+                }
+            }
+        }
     }
 }
