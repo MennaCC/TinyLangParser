@@ -21,20 +21,6 @@ namespace Parser.Logic
 
             switch (nextToken.TokenType) {
 
-                case "LEFTBRACKET":
-                    // advance the left barcket
-                    Parser.getInstance().AdvanceInput();
-                    // match the exp
-                    Controller.getInstance().MatchExpression(node, nextToken, new GrExp());
-                    //match the right bracket
-                    expToken.TokenType = "RIGHTBRACKET";
-                    Boolean matched = MatchInput(expToken);
-                    if (matched) {
-                        //advance the right bracket
-                        Parser.getInstance().AdvanceInput();
-                    }
-                    break;
-
                 case "NUMBER":
                     // create a child node for the number
                     Node numChild = new Node();
@@ -52,15 +38,30 @@ namespace Parser.Logic
                     // advance the identifier
                     Parser.getInstance().AdvanceInput();
                     break;
-            }
 
-            //check the case of GrFactor having only one child
-            if (node.Children.Count == 1)
-            {
-                // remove this child from the list of children and from the tree list
-                node.Text = node.Children[0].Text;
-                Parser.getInstance().parserTree.UntieChild(node.Children[0]);
-                node.Children.Clear();
+                 default :
+                    // advance the left barcket
+                    Parser.getInstance().AdvanceInput();
+                    // match the exp
+                    Controller.getInstance().MatchExpression(node, nextToken, new GrExp());
+                    //match the right bracket
+                    expToken.TokenType = "RIGHTBRACKET";
+                    Boolean matched = MatchInput(expToken);
+                    if (matched)
+                    {
+                        //advance the right bracket
+                        Parser.getInstance().AdvanceInput();
+                    }
+
+                    //check the case of GrFactor having only one child
+                    if (node.Children.Count == 1)
+                    {
+                        // remove this child from the list of children and from the tree list
+                        node.Text = node.Children[0].Text;
+                        Parser.getInstance().parserTree.UntieChild(node.Children[0]);
+                        node.Children.Clear();
+                    }
+                    break;
             }
 
 
