@@ -24,8 +24,7 @@ namespace Parser
                 instance = new TreeForm();
 
             return instance;
-        }
-        
+        } 
 
         private void TreeForm_Load(object sender, EventArgs e)
         {

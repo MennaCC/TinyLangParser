@@ -29,10 +29,5 @@ namespace Parser.CustomTree
         {
             return nodesList;
         }
-
-        public void Draw()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

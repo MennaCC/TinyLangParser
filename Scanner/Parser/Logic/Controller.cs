@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Scanner;
 using Parser.CustomTree;
+using Parser.UI;
 
 namespace Parser.Logic
 {
@@ -107,9 +108,8 @@ namespace Parser.Logic
         }
                
         public void Done() {
-
-            Parser.getInstance().DrawTree();
-            
+            Drawer.getInstance().initAndDraw();
+            TreeForm.getInstance().Show();
         }
         #endregion
     }

@@ -1,4 +1,7 @@
-﻿namespace Parser
+﻿using Parser.UI;
+using System.Windows.Forms;
+
+namespace Parser
 {
     partial class TreeForm
     {
@@ -38,6 +41,7 @@
             this.Name = "TreeForm";
             this.Text = "TreeForm";
             this.Load += new System.EventHandler(this.TreeForm_Load);
+            this.Paint += new PaintEventHandler(Drawer.getInstance().DrawGraphicalObjects);
             this.ResumeLayout(false);
 
         }

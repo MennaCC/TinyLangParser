@@ -9,35 +9,38 @@ namespace Parser.UI
     public class Drawer
     {
 
+        public void initAndDraw()
+        {
+            doneParsing = true;
+            CreateAndDrawGObjects();
+        }
+
         #region Drawing Properties
-        private Pen drawingPen = Pens.HotPink;
+        private const int   G_NODE_WIDTH = 30;
+        private const int   G_NODE_HEIGHT = 30;
+        private Pen         DRAWING_PEN = Pens.HotPink;
+        private Brush       TEXT_BRUSH = Brushes.HotPink;
+        private Font        TEXT_FONT = new Font(SystemFonts.CaptionFont, FontStyle.Italic);
+
         #endregion
 
-
         #region Private Attributes
-        private Parser parserInstance = Parser.getInstance();
-        private Dictionary<int, List<Node>> nodesLevelsMap = new Dictionary<int, List<Node>>();
+
+        private bool                                    doneParsing = false;
+        private Parser                                  parserInstance = Parser.getInstance();
+        private Dictionary<int, List<Node>>             nodesLevelsMap = new Dictionary<int, List<Node>>();
+        private Dictionary<Rectangle, string>           nodesList = new Dictionary<Rectangle, string>();
+        private List<KeyValuePair<Point, Point>>        edgesList = new List<KeyValuePair<Point, Point>>();
         #endregion
 
         #region Public Attributes
-        public List<RectangleF> nodesList = new List<RectangleF>();
-        public List<KeyValuePair<Point, Point>> edgesList = new List<KeyValuePair<Point, Point>>();
-
-        public int NumberOfLevel;
-        public int HeightForm;
-        public int WidthForm;
         public List<Node> value = new List<Node>();
-        public int key3;
-        public  int CountN =0;
-        Node n;
-
+        public int HeightForm, WidthForm, NumberOfLevel, CountN = 0, key3;
         #endregion
 
         #region Singleton
-        private Drawer() {
-        }
+        private Drawer() { }
         private static Drawer instance;
-
         public static Drawer getInstance()
         {
             if (instance == null)
@@ -46,73 +49,32 @@ namespace Parser.UI
         }
         #endregion
 
-        #region JOJO
-        #region Drawing
+        private void CreateAndDrawGObjects()
+        {
+            GroupNodesByLevel();
+            CreateGNodes();
+            CreateGEdges();
+        }
+
         /// <summary>
         /// this should called by onPaint event in the drawing form 
         /// itt actually draws
-        /// Assignee: Menna & JOJO
         /// </summary>
-        /// 
         public void DrawGraphicalObjects(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawRectangles(Pens.Red, nodesList.ToArray());
-            DrawEdges(e);
-        }
 
-        private void DrawEdges(PaintEventArgs e)
-        {
-            foreach (KeyValuePair<Point, Point> pointsPair in edgesList)
+            if (doneParsing && nodesList.Count != 0)
             {
-                e.Graphics.DrawLine(drawingPen, pointsPair.Key, pointsPair.Value);
-            }
-        }
-        /// <summary>
-        /// * calculates position of each node based on its level and the no.of nodes that are in its same level
-        /// * adds the calculated position point to the (Position) attribute in (Node) class
-        /// * creates a graphic object (rectangle or ellipse) for the node and add it to (nodesList) in this classs
-        /// 
-        /// input: nodesLevelsMap (in this class) 
-        /// output: calculated position & created GObjects
-        /// 
-        /// Note: hab2a an2elha fl private ba3d ma n5allas 34an a3rf a7ottelek btoo3k f region 3 b3daha :D 
-        /// 
-        /// Assignee: JOJO
-        /// </summary>
-        private void CreateGNodes()
-        {
-            NumberOfLevel = nodesLevelsMap.Count;
-
-            HeightForm = TreeForm.getInstance().ClientRectangle.Height;
-            WidthForm = TreeForm.getInstance().ClientRectangle.Width;
-
-            foreach (var kvp in nodesLevelsMap)
-            {
-                value = kvp.Value;
-                key3 = kvp.Key;
-                foreach(Node v in value)
+                foreach(Rectangle rect in nodesList.Keys)
                 {
-                    CountN++; 
-                    v.position.Y =((key3 *(HeightForm/NumberOfLevel))+((HeightForm/NumberOfLevel)/2));
-                    v.position.X = (((WidthForm/value.Count)*CountN)/2)+CountN;
-                    CreateGraphicObject(v);
+                    e.Graphics.DrawRectangle(Pens.Red, rect);
+                    e.Graphics.DrawString(nodesList[rect], TEXT_FONT, TEXT_BRUSH, rect);
                 }
-                CountN = 0;
+                DrawEdges(e);
             }
-
         }
-        public void CreateGraphicObject(Node n)
-        {
-           
-            RectangleF rect = new RectangleF(n.position.X, n.position.Y, 60, 60);
-            nodesList.Add(rect);
-        }
-      
 
-        #endregion
-        #endregion
-
-        #region Menna
+        #region private internal functions
 
         /// <summary>
         /// fill Dict 
@@ -127,56 +89,82 @@ namespace Parser.UI
         {
             foreach (Node node in parserInstance.parserTree.getNodesList())
             {
-                nodesLevelsMap[node.Level].Add(node);
+                if(nodesLevelsMap.ContainsKey(node.Level))
+                    nodesLevelsMap[node.Level].Add(node);
+                else
+                    nodesLevelsMap[node.Level] = new List<Node> { node };
             }
         }
 
-        #region Edges Creation
         /// <summary>
-        /// makes use of Recursive function and list of nodes to create linkage between them 
-        /// adds calculated edges to (edgesList)
+        /// * calculates position of each node based on its level and the no.of nodes that are in its same level
+        /// * adds the calculated position point to the (Position) attribute in (Node) class
+        /// * creates a graphic object (rectangle or ellipse) for the node and add it to (nodesList) in this classs
         /// 
-        /// Assignee: Menna
+        /// input: nodesLevelsMap (in this class) 
+        /// output: calculated position & created GObjects
+        /// 
+        /// Note: hab2a an2elha fl private ba3d ma n5allas 34an a3rf a7ottelek btoo3k f region 3 b3daha :D 
         /// </summary>
+        private void CreateGNodes()
+        {
+            NumberOfLevel = nodesLevelsMap.Count;
+
+            HeightForm = TreeForm.getInstance().ClientRectangle.Height;
+            WidthForm = TreeForm.getInstance().ClientRectangle.Width;
+
+            foreach (var kvp in nodesLevelsMap)
+            {
+                value = kvp.Value;
+                key3 = kvp.Key;
+                foreach (Node v in value)
+                {
+                    CountN++;
+                    v.position.Y = ((key3 * (HeightForm / NumberOfLevel)) + ((HeightForm / NumberOfLevel) / 2));
+                    v.position.X = (((WidthForm / value.Count) * CountN) / 2) + CountN;
+                    AddGnode(v);
+                }
+                CountN = 0;
+            }
+
+        }
+
+        private void AddGnode(Node n)
+        {
+
+            Rectangle rect = new Rectangle(n.position.X, n.position.Y, G_NODE_WIDTH, G_NODE_HEIGHT);
+            nodesList[rect] = n.Text;
+        }
+
+
+        private void DrawEdges(PaintEventArgs e)
+        {
+            Point start, end;
+
+            foreach(KeyValuePair<Point, Point> pointsPair in edgesList)
+            {
+                start = new Point(pointsPair.Key.X + (G_NODE_WIDTH / 2),
+                                  pointsPair.Key.Y + (G_NODE_HEIGHT / 2));
+
+                end = new Point(pointsPair.Value.X + (G_NODE_WIDTH / 2),
+                                  pointsPair.Value.Y + (G_NODE_HEIGHT / 2));
+
+                e.Graphics.DrawLine(DRAWING_PEN, start, end);
+            }
+        }    
+
         private void CreateGEdges()
         {
-            Node HeadNode = parserInstance.parserTree.HeadNode;
-            ConnectChildrenNodesRecursive(HeadNode);
-            ConnectSiblingNodesRecursive(HeadNode);
+            List<Node> parsedNodes = parserInstance.parserTree.getNodesList();
+            ConnectRecursive(parsedNodes);
         }
 
-        private void ConnectChildrenNodesRecursive(Node parentNode)
+        private void ConnectRecursive(List<Node> parsedNodes)
         {
-            if (parentNode.isLeaf)
-                return;
+            foreach(Node node in parsedNodes)
             {
-                //create edges between the node and each of its children
-                foreach(Node childNode in parentNode.Children)
-                {
-                    Connect(parentNode, childNode);
-                    ConnectChildrenNodesRecursive(childNode);
-                }
-            }
-
-        }
-
-        private void ConnectSiblingNodesRecursive(Node parentNode)
-        {
-            if (parentNode.isLonely)
-                return;
-
-            {
-                //create edges between node and its first sibling 
-                Connect(parentNode, parentNode.Siblings[0]);
-                //create edges between sibling and the next silbling
-                List<Node> sibs = parentNode.Siblings;
-                for (int i=0; i<sibs.Count; i++)
-                {
-                    Connect(sibs[i], sibs[i+1]);
-                    //call this same function foreach of the siblings and children nodes
-                    ConnectSiblingNodesRecursive(sibs[i]);
-                }
-               
+                ConnectChildrenNodes(node);
+                ConnectSiblingNodes(node);
             }
         }
 
@@ -186,10 +174,42 @@ namespace Parser.UI
             edgesList.Add(pair);
         }
 
+
+        #region Edges Cre(start.Text + "\n"+end.Text);   /// <summary>
+        /// makes use of Recursive function and list of nodes to create linkage between them 
+        /// adds calculated edges to (edgesList)
+        /// 
+        /// </summary>
+        private void ConnectChildrenNodes(Node parentNode)
+        {
+            if (parentNode.isLeaf)
+                return;
+
+            //create edges between the node and each of its children
+            foreach (Node childNode in parentNode.Children)
+            {
+                Connect(parentNode, childNode);
+            }
+
+        }
+
+        private void ConnectSiblingNodes(Node parentNode)
+        {
+            if (parentNode.isLonely)
+                return;
+
+                //create edges between node and its first sibling 
+                Connect(parentNode, parentNode.Siblings[0]);
+                //create edges between sibling and the next silbling
+                List<Node> sibs = parentNode.Siblings;
+                for (int i=1; i<sibs.Count; i++)
+                {
+                    Connect(sibs[i-1], sibs[i]);
+                }
+        }
+
+
         #endregion
         #endregion
-
-
-
     }
 }

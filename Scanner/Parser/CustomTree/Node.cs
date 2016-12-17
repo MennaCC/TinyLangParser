@@ -13,6 +13,11 @@ namespace Parser.CustomTree
         #region Constructors
         public Node(string txt)
         {
+            Children = new List<Node>();
+            Siblings = new List<Node>();
+            Level = 0;
+            isLeaf = true;
+            isLonely = true;
             this.Text = txt;
         }
         public Node()
@@ -23,11 +28,12 @@ namespace Parser.CustomTree
             isLeaf = true;
             isLonely = true;
         }
+
         #endregion
 
         #region Properties 
         public List<Node>   Children    { get; }
-        public List<Node>   Siblings    { get; }
+        public List<Node> Siblings { get; }
 
         public Tree         ownerTree   { get; set; }
         public Node         Parent      { get; set; }
@@ -88,26 +94,13 @@ namespace Parser.CustomTree
         #endregion
 
         #region Private Functions
-        public void DrawNode()
-        {
-
-            TreeForm draw = TreeForm.getInstance();
-            System.Drawing.Graphics graphics = draw.CreateGraphics();
-            System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(
-                50, 100, 60, 60);
-            graphics.DrawEllipse(System.Drawing.Pens.Black, rectangle);
-
-            draw.Show();
-            draw.Refresh();
-
-        }
- 
         private void addOwnerTree(Node n)
         {
             if (n.ownerTree == null)
             {
                 n.ownerTree = this.ownerTree;
             }
+            ownerTree.KeepTrackOfNode(n);
         }
         #endregion
     }

@@ -63,10 +63,6 @@ namespace Parser
             currentTokenIndex++;
             currentToken = tokensList[currentTokenIndex];
         }
-
-        public void DrawTree() {
-            this.parserTree.Draw();
-        }
         #endregion
 
     }
