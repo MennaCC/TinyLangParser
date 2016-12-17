@@ -39,7 +39,7 @@ namespace Parser.Logic
                     Parser.getInstance().AdvanceInput();
                     break;
 
-                 default :
+                 case "LEFTBRACKET":
                     // advance the left barcket
                     Parser.getInstance().AdvanceInput();
                     // match the exp
@@ -47,8 +47,7 @@ namespace Parser.Logic
                     //match the right bracket
                     expToken.TokenType = "RIGHTBRACKET";
                     Boolean matched = MatchInput(expToken);
-                    if (matched)
-                    {
+                    if (matched) {
                         //advance the right bracket
                         Parser.getInstance().AdvanceInput();
                     }
