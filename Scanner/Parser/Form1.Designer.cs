@@ -32,6 +32,7 @@
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.TokenType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TokenValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Go = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,9 +42,9 @@
             this.codeLinesTextBox.Location = new System.Drawing.Point(2, 0);
             this.codeLinesTextBox.Multiline = true;
             this.codeLinesTextBox.Name = "codeLinesTextBox";
-            this.codeLinesTextBox.Size = new System.Drawing.Size(335, 376);
+            this.codeLinesTextBox.Size = new System.Drawing.Size(335, 352);
             this.codeLinesTextBox.TabIndex = 0;
-            this.codeLinesTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            
             // 
             // DataGridView
             // 
@@ -73,11 +74,22 @@
             this.TokenValue.Name = "TokenValue";
             this.TokenValue.ReadOnly = true;
             // 
+            // Go
+            // 
+            this.Go.Location = new System.Drawing.Point(118, 350);
+            this.Go.Name = "Go";
+            this.Go.Size = new System.Drawing.Size(85, 26);
+            this.Go.TabIndex = 3;
+            this.Go.Text = "Go";
+            this.Go.UseVisualStyleBackColor = true;
+            this.Go.Click += new System.EventHandler(this.Go_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 381);
+            this.Controls.Add(this.Go);
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.codeLinesTextBox);
             this.Name = "Form1";
@@ -94,6 +106,7 @@
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn TokenType;
         private System.Windows.Forms.DataGridViewTextBoxColumn TokenValue;
+        private System.Windows.Forms.Button Go;
     }
 }
 

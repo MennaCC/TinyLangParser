@@ -34,14 +34,7 @@ namespace Scanner
         Scanner scanner = new Scanner();
         List<Token> tokens = new List<Token>();
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            DataGridView.Rows.Clear();
-            tokens.Clear();
-            UpdateTable();
-        }
-             
-
+       
         private void UpdateTable() {
 
             code = codeLinesTextBox.Text;
@@ -52,6 +45,15 @@ namespace Scanner
                 DataGridView.Rows.Add(token.TokenType, token.tokenValue);
             }
             Parser.Parser.getInstance().init(code);
+
+        }
+
+        private void Go_Click(object sender, EventArgs e)
+        {
+            DataGridView.Rows.Clear();
+            tokens.Clear();
+            UpdateTable();
+
         }
     }
 }

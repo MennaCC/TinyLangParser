@@ -33,16 +33,6 @@ namespace Parser.Logic
                         //advance the right bracket
                         Parser.getInstance().AdvanceInput();
                     }
-
-                    //check the case of GrFactor having only one child
-                    if ( node.Children.Count == 1)
-                    {
-                        // remove this child from the list of children and from the tree list
-                        node.Text = node.Children[0].Text;
-                        Parser.getInstance().parserTree.UntieChild(node.Children[0]);
-                        node.Children.Clear();
-                    }
-
                     break;
 
                 case "NUMBER":
@@ -63,6 +53,16 @@ namespace Parser.Logic
                     Parser.getInstance().AdvanceInput();
                     break;
             }
+
+            //check the case of GrFactor having only one child
+            if (node.Children.Count == 1)
+            {
+                // remove this child from the list of children and from the tree list
+                node.Text = node.Children[0].Text;
+                Parser.getInstance().parserTree.UntieChild(node.Children[0]);
+                node.Children.Clear();
+            }
+
 
         }
     }
