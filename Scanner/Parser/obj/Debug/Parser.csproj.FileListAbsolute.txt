@@ -24,3 +24,4 @@ C:\Users\Hager\TinyLangParser\Scanner\Parser\bin\Debug\Parser.exe.config
 C:\Users\Hager\TinyLangParser\Scanner\Parser\obj\Debug\Parser.exe
 C:\Users\Hager\TinyLangParser\Scanner\Parser\obj\Debug\Parser.pdb
 C:\3anQa2\College\Senior\TinyLangParser\Scanner\Parser\obj\Debug\Parser.TreeForm.resources
+C:\Users\Shimaa\Desktop\parser_tree\TinyLangParser\Scanner\Parser\obj\Debug\Parser.TreeForm.resources

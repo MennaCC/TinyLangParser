@@ -67,8 +67,10 @@ namespace Parser.Logic
                 node.Text = grType;
                 GR.execute(node);
             }
-            
-            
+
+           
+
+
         }
 
         /// <summary>
