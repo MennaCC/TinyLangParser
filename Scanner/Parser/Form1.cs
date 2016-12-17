@@ -13,6 +13,7 @@ namespace Scanner
 {
     public partial class Form1 : Form
     {
+        #region singlton 
         private Form1()
         {
             InitializeComponent();
@@ -27,8 +28,7 @@ namespace Scanner
 
             return instance;
         }
-
-
+        #endregion 
 
         string code ;
         Scanner scanner = new Scanner();
